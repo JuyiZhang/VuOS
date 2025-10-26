@@ -1,6 +1,6 @@
 [submodule "esp-hosted"]
 	path = esp-hosted
-	url = https://github.com/espressif/esp-hosted.git
+	url = https://github.com/JuyiZhang/esp-hosted-sg200x.git
 [submodule "host-tools"]
 	path = host-tools
 	url = https://github.com/sophgo/host-tools
