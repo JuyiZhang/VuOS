@@ -43,6 +43,14 @@ static struct panel_desc_s panel_desc = {
 	.dsi_init_cmds = dsi_init_cmds_hx8394_720x1280,
 	.dsi_init_cmds_size = ARRAY_SIZE(dsi_init_cmds_hx8394_720x1280)
 };
+#elif defined(MIPI_PANEL_ST7703)
+static struct panel_desc_s panel_desc = {
+        .panel_name = "ST7703-720x1280",
+        .dev_cfg = &dev_cfg_st7703,
+        .hs_timing_cfg = &hs_timing_cfg_st7703,
+        .dsi_init_cmds = dsi_init_cmds_st7703,
+        .dsi_init_cmds_size = ARRAY_SIZE(dsi_init_cmds_st7703)
+};
 #elif defined(MIPI_PANEL_ILI9881C)
 #include "dsi_ili9881c.h"
 static struct panel_desc_s panel_desc = {
