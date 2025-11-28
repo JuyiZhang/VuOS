@@ -366,7 +366,13 @@ static int do_startvo(struct cmd_tbl *cmdtp, int flag, int argc, char * const ar
 	else
 		panel_name = env_get("panel");
 	if (panel_name != NULL) {
-		if (strcmp(panel_name,"zct2133v1") == 0) { // 7inch
+		if (strcmp(panel_name,"st7703") == 0) { // 2.8 inch
+			panel_desc.panel_name = "ST7703-720x1280";
+			panel_desc.dev_cfg = &dev_cfg_st7703;
+			panel_desc.hs_timing_cfg = &hs_timing_cfg_st7703;
+			panel_desc.dsi_init_cmds = dsi_init_cmds_st7703;
+			panel_desc.dsi_init_cmds_size = ARRAY_SIZE(dsi_init_cmds_st7703);
+		} else if (strcmp(panel_name,"zct2133v1") == 0) { // 7inch
 			panel_desc.panel_name = "zct2133v1-800x1280";
 			panel_desc.dev_cfg = &dev_cfg_zct2133v1_800x1280;
 			panel_desc.hs_timing_cfg = &hs_timing_cfg_zct2133v1_800x1280;
