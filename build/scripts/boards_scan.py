@@ -90,8 +90,8 @@ def load_board_config(path):
         build_helper.KCONFIG_PATH, suppress_traceback=True, warn=True
     )
     kconf.load_config(path)
-    with open("/home/arkrrrrrrr/VuOS/scan.log", "w") as f:
-        f.write(kconf.__str__())
+    # with open("/home/arkrrrrrrr/VuOS/scan.log", "w") as f:
+    #     f.write(kconf.__str__())
     return kconf
 
 
@@ -109,33 +109,33 @@ def check_board_path(board_dir, chip, board):
 def scan_boards_config():
     configs_saved = sorted(glob.glob(build_helper.BOARD_KCONFIG_SAVED_GLOB))
     boards = {}
-    with open("//home/arkrrrrrrr/board_scan.log", "w") as f:
-        f.write("\n".join(configs_saved) + "\n")
+    # with open("//home/arkrrrrrrr/board_scan.log", "w") as f:
+    #     f.write("\n".join(configs_saved) + "\n")
     
 
-        for n, path in enumerate(configs_saved):
-            *_, arch, board, conf = path.split("/")
-            if arch == "default":
-                continue
-            f.write("%d: %s\n" % (n, path))
-            kconf = load_board_config(path)
-            f.write(kconf.syms.__str__() + "\n")
-            f.write(kconf.syms["BOARD"].str_value + "\n")
-            check_board_path(
-                os.path.dirname(path),
-                kconf.syms["CHIP"].str_value,
-                kconf.syms["BOARD"].str_value,
-            )
+    for n, path in enumerate(configs_saved):
+        *_, arch, board, conf = path.split("/")
+        if arch == "default":
+            continue
+        # f.write("%d: %s\n" % (n, path))
+        kconf = load_board_config(path)
+        # f.write(kconf.syms.__str__() + "\n")
+        # f.write(kconf.syms["BOARD"].str_value + "\n")
+        check_board_path(
+            os.path.dirname(path),
+            kconf.syms["CHIP"].str_value,
+            kconf.syms["BOARD"].str_value,
+        )
 
-            br = Board(
-                kconf.syms["CHIP"].str_value,
-                kconf.syms["BOARD"].str_value,
-                kconf.syms["DDR_CFG"].str_value,
-                "",
-            )
+        br = Board(
+            kconf.syms["CHIP"].str_value,
+            kconf.syms["BOARD"].str_value,
+            kconf.syms["DDR_CFG"].str_value,
+            "",
+        )
 
-            logging.debug("%d: %s", n, br)
-            boards.setdefault(br.chip, []).append(br)
+        logging.debug("%d: %s", n, br)
+        boards.setdefault(br.chip, []).append(br)
 
     return boards
 
