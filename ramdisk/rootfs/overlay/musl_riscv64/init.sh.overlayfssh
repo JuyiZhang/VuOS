@@ -40,14 +40,16 @@ if [ -e /dev/ubiblock0_0 ]; then
   echo "Mounting spinand rootfs"
   mount -t squashfs -o ro /dev/ubiblock0_0 /mnt
 else
-  DEV=`/root/cmdline.sh`
-  echo "Mounting emmc rootfs (${DEV})"
-  until [ -e "${DEV}"  ]; do
-    echo -ne "If the log shows more then 5 seconds, you may need to check your rootfs\r"
-    mdev -s
-    DEV=`/root/cmdline.sh`
-  done
-  mount -t squashfs -o ro "${DEV}" /mnt
+  echo "SPINAND not found, mount anyway and try"
+  mount -t squashfs -o ro /dev/ubiblock0_0 /mnt
+  # DEV=`/root/cmdline.sh`
+  # echo "Mounting emmc rootfs (${DEV})"
+  # until [ -e "${DEV}"  ]; do
+  #   echo -ne "If the log shows more then 5 seconds, you may need to check your rootfs\r"
+  #   mdev -s
+  #   DEV=`/root/cmdline.sh`
+  # done
+  # mount -t squashfs -o ro "${DEV}" /mnt
 fi
 
 if [ $? != 0 ];then

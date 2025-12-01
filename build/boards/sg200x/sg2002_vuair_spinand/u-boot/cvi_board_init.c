@@ -55,13 +55,13 @@ static inline void user_led_toggle(void) {
 int cvi_board_init(void)
 {
 
-        mmio_write_32(0x0300101C, 0x2);
-        mmio_write_32(0x03001020, 0x2);
-        mmio_write_32(0x03001024, 0x2);
-        mmio_write_32(0x03001028, 0x1);
-        mmio_write_32(0x0300102C, 0x1);
-        mmio_write_32(0x03001030, 0x2);
-        mmio_write_32(0x03001034, 0x3);
+        // mmio_write_32(0x0300101C, 0x2);
+        // mmio_write_32(0x03001020, 0x2);
+        // mmio_write_32(0x03001024, 0x2);
+        // mmio_write_32(0x03001028, 0x1);
+        // mmio_write_32(0x0300102C, 0x1);
+        // mmio_write_32(0x03001030, 0x2);
+        // mmio_write_32(0x03001034, 0x3);
         mmio_write_32(0x03001038, 0x3);
         mmio_write_32(0x0300103C, 0x3);
         mmio_write_32(0x03001040, 0x0);

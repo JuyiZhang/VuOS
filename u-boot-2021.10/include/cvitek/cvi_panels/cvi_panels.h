@@ -33,6 +33,7 @@ struct panel_desc_s {
 #include "dsi_st7701_hd228001c31.h"
 #include "dsi_d240si31.h"
 #include "dsi_st7701_d310t9362v1.h"
+// #include "dsi_st7703.h"
 
 #ifdef MIPI_PANEL_HX8394
 #include "dsi_hx8394_evb.h"
